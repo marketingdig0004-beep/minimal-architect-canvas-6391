@@ -149,3 +149,10 @@
     }
   }
 }
+
+/* Remove the Lovable editor badge from the published experience */
+#lovable-badge { display: none !important; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; }
+::selection { background: #d6dfcf; color: #344438; }
