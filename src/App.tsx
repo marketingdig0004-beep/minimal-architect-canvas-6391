@@ -15,7 +15,7 @@ const services = [
   { icon: Sparkles, title: "Saúde emocional", text: "Cuidado atento para atravessar momentos desafiadores com mais recursos, equilíbrio e gentileza." },
 ];
 
-const App = () => {
+// Site institucional de Suzana Lopes — atualização sincronizada com a Lovable.\nconst App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
   return (
