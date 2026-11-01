@@ -14,9 +14,11 @@ import office from "@/assets/consulting-room.jpg.asset.json";
 
 const nav = [["Início", "#inicio"], ["Sobre mim", "#sobre"], ["Atendimentos", "#atendimentos"], ["Meu espaço", "#espaco"], ["Contato", "#contato"]];
 const services = [
-  { icon: Heart, title: "Psicoterapia individual", text: "Um espaço de escuta e acolhimento para compreender emoções, reconhecer padrões e construir novos caminhos." },
-  { icon: Brain, title: "Acompanhamento infantil", text: "Cuidado atento ao universo da criança, respeitando seu tempo, sua expressão e suas necessidades." },
-  { icon: Sparkles, title: "Orientação às famílias", text: "Um olhar acolhedor para apoiar famílias e fortalecer vínculos durante o desenvolvimento." },
+  { icon: Brain, title: "Análise do Comportamento Aplicada (ABA)", text: "Atuação com especialização em ABA, com foco no acompanhamento de pessoas autistas e no respeito às necessidades individuais." },
+  { icon: Heart, title: "Psicoterapia para todas as idades", text: "Atendimento psicológico para crianças, adolescentes e adultos, com escuta acolhedora e cuidado individualizado." },
+  { icon: Sparkles, title: "Acompanhamento infantil", text: "Experiência no acompanhamento de crianças autistas, com TDAH e com síndrome de Down, considerando a singularidade de cada criança." },
+  { icon: Brain, title: "Avaliação neuropsicológica", text: "Processo de avaliação das funções cognitivas e aspectos do desenvolvimento, conforme a necessidade de cada pessoa." },
+  { icon: Heart, title: "Reabilitação para pessoas com TDAH", text: "Acompanhamento voltado ao desenvolvimento de estratégias e habilidades para lidar com desafios do dia a dia relacionados ao TDAH." },
 ];
 const activities = [
   { asset: child, alt: "Criança em atividade lúdica com óculos coloridos" },
@@ -55,7 +57,7 @@ export default function App() {
           <p className="eyebrow mb-6 text-primary-foreground/80">Escuta. Presença. Acolhimento.</p>
           <h1 className="font-serif text-5xl leading-[1.1] sm:text-6xl lg:text-7xl">Suzana Lopes</h1>
           <p className="mt-4 font-serif text-3xl italic leading-snug sm:text-4xl">Cuidar de si é um jeito de florescer.</p>
-          <p className="mt-6 max-w-lg text-sm leading-7 text-primary-foreground/85 sm:text-base">Um espaço seguro para acolher sua história, compreender emoções e descobrir novas possibilidades, no seu tempo e com gentileza.</p>
+          <p className="mt-6 max-w-lg text-sm leading-7 text-primary-foreground/85 sm:text-base">Atendimento psicológico para crianças, adolescentes e adultos, com atuação em ABA, acompanhamento de pessoas autistas e com TDAH, avaliação neuropsicológica e reabilitação para pessoas com TDAH.</p>
           <div className="mt-8"><ContactButton light /></div>
           <a href="#sobre" className="mt-12 inline-flex items-center gap-3 text-xs text-primary-foreground/80"><ArrowDown size={16} />Conheça meu trabalho</a>
         </div>
@@ -64,13 +66,13 @@ export default function App() {
       <section id="sobre" className="section-space">
         <div className="site-container grid items-center gap-12 md:grid-cols-[.85fr_1.15fr] lg:gap-20">
           <figure className="portrait-frame mx-auto w-full max-w-sm"><img src={portrait.url} alt="Suzana Lopes em seu retrato profissional" loading="lazy" className="aspect-[2/3] w-full rounded-t-[160px] object-cover" /><figcaption className="mt-4 flex items-center justify-between border-t border-border pt-4 text-xs text-muted-foreground"><span>Suzana Lopes</span><span>Psicologia & cuidado</span></figcaption></figure>
-          <div><p className="eyebrow text-primary">Prazer, sou Suzana</p><h2 className="section-title mt-5">Cada história merece ser ouvida com carinho.</h2><div className="my-7 h-px w-14 bg-primary/40" /><p className="body-copy">Acredito que cada pessoa carrega uma história única e merece ser acolhida em sua singularidade. Meu propósito é oferecer um espaço seguro, ético e respeitoso, onde seja possível falar sobre sentimentos, desafios e conquistas.</p><p className="body-copy mt-4">A jornada de cuidado acontece passo a passo, com escuta, presença e respeito ao tempo de cada pessoa e de cada família.</p><p className="my-7 font-serif text-2xl italic text-primary">Acolher, compreender, florescer.</p><ContactButton /></div>
+          <div><p className="eyebrow text-primary">Prazer, sou Suzana</p><h2 className="section-title mt-5">Cada história merece ser ouvida com carinho.</h2><div className="my-7 h-px w-14 bg-primary/40" /><p className="body-copy">Sou psicóloga, com especialização em Análise do Comportamento Aplicada (ABA) ao autismo. Tenho experiência com crianças autistas, com TDAH e com síndrome de Down, e realizo psicoterapia para crianças, adolescentes e adultos.</p><p className="body-copy mt-4">Também realizo avaliação neuropsicológica e reabilitação com pessoas com TDAH. Cada acompanhamento é conduzido com escuta, presença e respeito às necessidades e ao tempo de cada pessoa e de sua família.</p><p className="my-7 font-serif text-2xl italic text-primary">Acolher, compreender, florescer.</p><ContactButton /></div>
         </div>
       </section>
 
       <section id="atendimentos" className="section-space bg-secondary/60">
         <div className="site-container"><div className="max-w-2xl"><p className="eyebrow text-primary">Como posso ajudar</p><h2 className="section-title mt-5">Cuidado que respeita seu tempo e sua jornada.</h2></div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">{services.map(({ icon: Icon, title, text }, i) => <article key={title} className="flex flex-col rounded-lg border border-border bg-card p-7 lg:p-8"><div className="flex items-center justify-between"><Icon size={26} strokeWidth={1.4} className="text-primary" /><span className="text-xs text-muted-foreground">0{i + 1}</span></div><h3 className="mt-8 font-serif text-2xl leading-tight">{title}</h3><p className="body-copy mb-6 mt-4">{text}</p><Button asChild variant="link" className="mt-auto h-auto justify-start p-0 text-xs"><a href="#contato">Saiba mais<ArrowUpRight /></a></Button></article>)}</div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{services.map(({ icon: Icon, title, text }, i) => <article key={title} className="flex flex-col rounded-lg border border-border bg-card p-7 lg:p-8"><div className="flex items-center justify-between"><Icon size={26} strokeWidth={1.4} className="text-primary" /><span className="text-xs text-muted-foreground">0{i + 1}</span></div><h3 className="mt-8 font-serif text-2xl leading-tight">{title}</h3><p className="body-copy mb-6 mt-4">{text}</p><Button asChild variant="link" className="mt-auto h-auto justify-start p-0 text-xs"><a href="#contato">Saiba mais<ArrowUpRight /></a></Button></article>)}</div>
         </div>
       </section>
 
