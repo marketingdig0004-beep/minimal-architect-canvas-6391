@@ -5,18 +5,18 @@
 @layer base {
   :root {
     color-scheme: light;
-    --background: 40 33% 98%;
-    --foreground: 135 10% 21%;
-    --card: 40 33% 98%;
+    --background: 60 14% 98%;
+    --foreground: 150 12% 19%;
+    --card: 0 0% 100%;
     --card-foreground: 135 10% 21%;
     --popover: 40 33% 98%;
     --popover-foreground: 135 10% 21%;
-    --primary: 132 18% 40%;
+    --primary: 151 22% 31%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 95 20% 92%;
+    --secondary: 135 15% 94%;
     --secondary-foreground: 135 10% 21%;
     --muted: 95 20% 94%;
-    --muted-foreground: 120 6% 45%;
+    --muted-foreground: 140 5% 40%;
     --accent: 95 20% 92%;
     --accent-foreground: 135 10% 21%;
     --destructive: 0 84% 60%;
@@ -24,7 +24,10 @@
     --border: 95 12% 88%;
     --input: 95 12% 88%;
     --ring: 132 18% 40%;
-    --radius: .75rem;
+    --radius: .5rem;
+    --hero-shade: 150 25% 9%;
+    --gradient-hero: linear-gradient(90deg, hsl(var(--hero-shade) / .78), hsl(var(--hero-shade) / .38) 60%, hsl(var(--hero-shade) / .12));
+    --selection: 130 24% 85%;
     --sidebar-background: 40 33% 98%;
     --sidebar-foreground: 135 10% 21%;
     --sidebar-primary: 132 18% 40%;
@@ -38,6 +41,23 @@
   html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body { @apply bg-background text-foreground font-sans antialiased; margin: 0; min-width: 320px; }
   #root { min-height: 100vh; width: 100%; }
-  ::selection { background: #d6e3d1; color: #344438; }
+  ::selection { background: hsl(var(--selection)); color: hsl(var(--foreground)); }
+}
+.site-container { max-width: 1200px; margin-inline: auto; padding-inline: 28px; }
+.section-space { padding-block: 88px; scroll-margin-top: 80px; }
+.section-title { font-family: Georgia, 'Times New Roman', serif; font-size: 44px; line-height: 1.15; }
+.body-copy { color: hsl(var(--muted-foreground)); font-size: 14px; line-height: 1.9; }
+.eyebrow { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .18em; }
+.nature-hero { min-height: 560px; height: min(720px, calc(100svh - 130px)); scroll-margin-top: 80px; }
+.nature-overlay { background: var(--gradient-hero); }
+.portrait-frame { padding-inline: 8px; }
+@media (max-width: 639px) {
+  .site-container { padding-inline: 22px; }
+  .section-space { padding-block: 60px; }
+  .section-title { font-size: 34px; }
+  .nature-hero { min-height: 530px; height: calc(100svh - 125px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 #lovable-badge { display: none !important; }
