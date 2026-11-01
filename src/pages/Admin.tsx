@@ -62,18 +62,7 @@ export default function Admin() {
     finally { setBusy(false); }
   };
 
-  const createAccess = async () => {
-    setBusy(true); setNotice("");
-    try {
-      if (email.trim().toLowerCase() !== ADMIN_EMAIL) throw new Error("Use o e-mail administrativo autorizado.");
-      if (password.length < 8) throw new Error("A senha precisa ter pelo menos 8 caracteres.");
-      const { data, error } = await supabase.auth.signUp({ email: ADMIN_EMAIL, password });
-      if (error) throw error;
-      if (!data.session) setNotice("Cadastro recebido. Verifique o e-mail para confirmar o acesso e depois entre no painel.");
-      else setNotice("Acesso administrativo criado.");
-    } catch (error) { setNotice(error instanceof Error ? error.message : "Não foi possível criar o acesso."); }
-    finally { setBusy(false); }
-  };
+
 
   const field = (label: string, key: keyof SiteContent, multiline = false) => <div className="space-y-2"><label className="text-sm font-medium">{label}</label>{multiline ? <textarea rows={4} value={content[key]} onChange={e => setContent(old => ({ ...old, [key]: e.target.value }))} className="w-full rounded-lg border bg-background p-3 text-sm outline-none focus:ring-2 focus:ring-primary" /> : <input value={content[key]} onChange={e => setContent(old => ({ ...old, [key]: e.target.value }))} className="w-full rounded-lg border bg-background p-3 text-sm outline-none focus:ring-2 focus:ring-primary" />}</div>;
 
@@ -86,8 +75,7 @@ export default function Admin() {
       <div className="space-y-2"><label className="text-sm font-medium">Senha</label><input type="password" required value={password} onChange={e => setPassword(e.target.value)} className="w-full rounded-lg border bg-background p-3 text-sm" /></div>
       {notice && <p role="status" className="rounded-lg bg-secondary p-3 text-sm">{notice}</p>}
       <Button type="submit" disabled={busy} className="w-full">{busy ? <Loader2 className="animate-spin" /> : <LogIn size={16} />} Entrar</Button>
-      <Button type="button" variant="outline" disabled={busy} className="w-full" onClick={() => void createAccess()}>Criar primeiro acesso administrativo</Button>
-      <p className="text-xs leading-5 text-muted-foreground">O primeiro acesso é criado pelo serviço de autenticação do Lovable Cloud. Somente o e-mail administrativo autorizado pode entrar.</p>
+      <p className="text-xs leading-5 text-muted-foreground">O acesso é validado pelo serviço de autenticação do Lovable Cloud. Somente a conta administrativa autorizada pode entrar.</p>
       <Button asChild variant="ghost" className="w-full"><a href="/"><ArrowLeft size={16} /> Voltar ao site</a></Button>
     </form>
   </main>;
