@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, ArrowDown, ArrowUp, Menu, X, Heart, Brain, Sparkles, Mail, MapPin, Phone, Flower2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { loadSiteContent } from "@/lib/site-content";
 import trees from "@/assets/trees-garden.jpg";
 import portrait from "@/assets/suzana-portrait.jpg.asset.json";
 import child from "@/assets/child-play.jpg.asset.json";
@@ -35,6 +36,7 @@ function ContactButton({ children = "Vamos conversar", light = false }: { childr
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const content = loadSiteContent();
   const closeMenu = () => setMenuOpen(false);
   return <div className="min-h-screen bg-background text-foreground">
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
@@ -51,13 +53,13 @@ export default function App() {
     </header>
     <main>
       <section id="inicio" className="nature-hero relative isolate flex items-center overflow-hidden text-primary-foreground">
-        <img src={trees} alt="Árvores e jardim iluminados pela luz natural" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+        <img src={content.heroImage || trees} alt="Imagem de destaque do site" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover" />
         <div className="nature-overlay absolute inset-0 -z-10" />
         <div className="site-container w-full py-16 motion-safe:animate-fade-in-up">
           <p className="eyebrow mb-6 text-primary-foreground/80">Escuta. Presença. Acolhimento.</p>
-          <h1 className="font-serif text-5xl leading-[1.1] sm:text-6xl lg:text-7xl">Suzana Lopes</h1>
-          <p className="mt-4 font-serif text-3xl italic leading-snug sm:text-4xl">Cuidar de si é um jeito de florescer.</p>
-          <p className="mt-6 max-w-lg text-sm leading-7 text-primary-foreground/85 sm:text-base">Atendimento psicológico para crianças, adolescentes e adultos, com atuação em ABA, acompanhamento de pessoas autistas e com TDAH, avaliação neuropsicológica e reabilitação para pessoas com TDAH.</p>
+          <h1 className="font-serif text-5xl leading-[1.1] sm:text-6xl lg:text-7xl">{content.heroTitle}</h1>
+          <p className="mt-4 font-serif text-3xl italic leading-snug sm:text-4xl">{content.heroSubtitle}</p>
+          <p className="mt-6 max-w-lg text-sm leading-7 text-primary-foreground/85 sm:text-base">{content.heroDescription}</p>
           <div className="mt-8"><ContactButton light /></div>
           <a href="#sobre" className="mt-12 inline-flex items-center gap-3 text-xs text-primary-foreground/80"><ArrowDown size={16} />Conheça meu trabalho</a>
         </div>
@@ -65,8 +67,8 @@ export default function App() {
 
       <section id="sobre" className="section-space">
         <div className="site-container grid items-center gap-12 md:grid-cols-[.85fr_1.15fr] lg:gap-20">
-          <figure className="portrait-frame mx-auto w-full max-w-sm"><img src={portrait.url} alt="Suzana Lopes em seu retrato profissional" loading="lazy" className="aspect-[2/3] w-full rounded-t-[160px] object-cover" /><figcaption className="mt-4 flex items-center justify-between border-t border-border pt-4 text-xs text-muted-foreground"><span>Suzana Lopes</span><span>Psicologia & cuidado</span></figcaption></figure>
-          <div><p className="eyebrow text-primary">Prazer, sou Suzana</p><h2 className="section-title mt-5">Cada história merece ser ouvida com carinho.</h2><div className="my-7 h-px w-14 bg-primary/40" /><p className="body-copy">Sou psicóloga, com especialização em Análise do Comportamento Aplicada (ABA) ao autismo. Tenho experiência com crianças autistas, com TDAH e com síndrome de Down, e realizo psicoterapia para crianças, adolescentes e adultos.</p><p className="body-copy mt-4">Também realizo avaliação neuropsicológica e reabilitação com pessoas com TDAH. Cada acompanhamento é conduzido com escuta, presença e respeito às necessidades e ao tempo de cada pessoa e de sua família.</p><p className="my-7 font-serif text-2xl italic text-primary">Acolher, compreender, florescer.</p><ContactButton /></div>
+          <figure className="portrait-frame mx-auto w-full max-w-sm"><img src={content.portraitImage || portrait.url} alt="Suzana Lopes em seu retrato profissional" loading="lazy" className="aspect-[2/3] w-full rounded-t-[160px] object-cover" /><figcaption className="mt-4 flex items-center justify-between border-t border-border pt-4 text-xs text-muted-foreground"><span>Suzana Lopes</span><span>Psicologia & cuidado</span></figcaption></figure>
+          <div><p className="eyebrow text-primary">Prazer, sou Suzana</p><h2 className="section-title mt-5">{content.aboutHeading}</h2><div className="my-7 h-px w-14 bg-primary/40" /><p className="body-copy">{content.aboutText}</p><p className="body-copy mt-4">Também realizo avaliação neuropsicológica e reabilitação com pessoas com TDAH. Cada acompanhamento é conduzido com escuta, presença e respeito às necessidades e ao tempo de cada pessoa e de sua família.</p><p className="my-7 font-serif text-2xl italic text-primary">Acolher, compreender, florescer.</p><ContactButton /></div>
         </div>
       </section>
 
