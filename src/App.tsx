@@ -36,7 +36,8 @@ function ContactButton({ children = "Vamos conversar", light = false }: { childr
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [content, setContent] = useState(loadSiteContent);\n  useEffect(() => { let active = true; fetchSiteContent().then(value => { if (active) setContent(value); }); const refresh = () => fetchSiteContent().then(value => { if (active) setContent(value); }); window.addEventListener("suzana-content-updated", refresh); return () => { active = false; window.removeEventListener("suzana-content-updated", refresh); }; }, []);
+  const [content, setContent] = useState(loadSiteContent);
+  useEffect(() => { let active = true; fetchSiteContent().then(value => { if (active) setContent(value); }); const refresh = () => fetchSiteContent().then(value => { if (active) setContent(value); }); window.addEventListener("suzana-content-updated", refresh); return () => { active = false; window.removeEventListener("suzana-content-updated", refresh); }; }, []);
   const closeMenu = () => setMenuOpen(false);
   return <div className="min-h-screen bg-background text-foreground">
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
