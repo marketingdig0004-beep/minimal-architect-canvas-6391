@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, ArrowDown, ArrowUp, Menu, X, Heart, Brain, Sparkles, Mail, MapPin, Phone, Flower2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { loadSiteContent } from "@/lib/site-content";
+import { loadSiteContent, fetchSiteContent } from "@/lib/site-content";
 import trees from "@/assets/trees-garden.jpg";
 import portrait from "@/assets/suzana-portrait.jpg.asset.json";
 import child from "@/assets/child-play.jpg.asset.json";
@@ -36,7 +36,7 @@ function ContactButton({ children = "Vamos conversar", light = false }: { childr
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const content = loadSiteContent();
+  const [content, setContent] = useState(loadSiteContent);\n  useEffect(() => { let active = true; fetchSiteContent().then(value => { if (active) setContent(value); }); const refresh = () => fetchSiteContent().then(value => { if (active) setContent(value); }); window.addEventListener("suzana-content-updated", refresh); return () => { active = false; window.removeEventListener("suzana-content-updated", refresh); }; }, []);
   const closeMenu = () => setMenuOpen(false);
   return <div className="min-h-screen bg-background text-foreground">
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
