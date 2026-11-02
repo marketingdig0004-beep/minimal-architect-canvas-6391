@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { loadSiteContent, fetchSiteContent } from "@/lib/site-content";
 import trees from "@/assets/trees-garden.jpg";
 import portrait from "@/assets/suzana-portrait.jpg.asset.json";
-import child from "@/assets/child-play.jpg.asset.json";
 import writing from "@/assets/writing-care.jpg.asset.json";
 import drawing from "@/assets/drawing-care.jpg.asset.json";
 import puzzle from "@/assets/puzzle-care.jpg.asset.json";
@@ -22,7 +21,6 @@ const services = [
   { icon: Heart, title: "Reabilitação para pessoas com TDAH", text: "Acompanhamento voltado ao desenvolvimento de estratégias e habilidades para lidar com desafios do dia a dia relacionados ao TDAH." },
 ];
 const activities = [
-  { asset: child, alt: "Criança em atividade lúdica com óculos coloridos" },
   { asset: writing, alt: "Atividade de escrita acompanhada" },
   { asset: drawing, alt: "Atividade de desenho e pintura" },
   { asset: puzzle, alt: "Atividade com quebra-cabeça" },
@@ -81,7 +79,7 @@ export default function App() {
 
       <section className="section-space">
         <div className="site-container"><div className="grid gap-6 md:grid-cols-2 md:items-end"><div><p className="eyebrow text-primary">Cuidado também na infância</p><h2 className="section-title mt-5">Brincar, aprender e crescer.</h2></div><div><p className="body-copy">Atividades lúdicas, desenhos, jogos e brincadeiras podem ajudar a criança a expressar sentimentos e experiências.</p><p className="body-copy mt-3">Um olhar atento à individualidade de cada criança, em parceria com sua família.</p></div></div>
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{activities.map(({ asset, alt }) => <figure key={asset.asset_id} className="overflow-hidden rounded-md bg-muted"><img src={asset.url} alt={alt} loading="lazy" className="aspect-[1/2] w-full object-cover transition-transform duration-500 motion-safe:hover:scale-105" /></figure>)}</div>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">{activities.map(({ asset, alt }) => <figure key={asset.asset_id} className="overflow-hidden rounded-md bg-muted"><img src={asset.url} alt={alt} loading="lazy" className="aspect-[1/2] w-full object-cover transition-transform duration-500 motion-safe:hover:scale-105" /></figure>)}</div>
           <div className="mt-9"><ContactButton>Fale comigo</ContactButton></div>
         </div>
       </section>
